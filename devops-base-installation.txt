@@ -1,0 +1,72 @@
+https://github.com/shamtupe2014/Devops-Realtime-Project.git download-build,deploy ,testing,delivery
+
+
+Git repo= https://github.com/shamtupe2014/java-test-pro.git
+other sample public repo= https://github.com/buddy-works/simple-java-project.git
+
+
+yum update -y
+wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.87/bin/apache-tomcat-9.0.87.tar.gz
+tar -xvzf apache-tomcat-9.0.87.tar.gz
+mv apache-tomcat-9.0.87.tar.gz /opt
+yum install java -y
+
+--------------------
+jenkins-aws-linux
+
+sudo dnf update
+sudo dnf install java-11-amazon-corretto -y
+sudo wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo dnf install jenkins -y
+jenkins --version
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+sudo systemctl status jenkins
+----------------------------------
+Maven 
+sudo su -
+wget https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
+tar -xvzf apache-maven-3.9.6-bin.tar.gz
+mv apache-maven-3.9.6-bin.tar.gz /opt
+ln -s /opt/maven-3.9.6-bin.tar.gz /opt/maven
+sudo vi /etc/profile.d/maven.sh
+	export M2_HOME=/opt/maven
+	export PATH=${M2_HOME}/bin:${PATH}
+sudo chmod +x /etc/profile.d/maven.sh
+source /etc/profile.d/maven.sh
+mvn -version
+---------------------------------------------------------------
+install jenkins on ubuntu
+sudo su -
+sudo apt-get update -y
+sudo apt install openjdk-11-jdk -y
+curl -fsSL http://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]  https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt update
+sudo apt install jenkins -y
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+
+--- To create more spaace to run jenkins server more smoothly use below commands,
+
+	sudo fallocate -l 1G /swapfile
+	sudo chmod 600 /swapfile
+	sudo mkswap /swapfile
+	sudo swapon /swapfile
+	free -m 
+----------------
+# Obtain CSRF Crumb
+CRUMB=$(curl -s 'http://35.166.228.160:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
+
+# Make Request to Jenkins with CSRF Crumb
+curl -X POST \
+  -H "$CRUMB" \
+  -u admin:1112c94f2ecfb68734ca19f03fe9020a8e \
+  http://35.166.228.160:8080/job/demo/build
+  
+  
+  
+ API KEY=1112c94f2ecfb68734ca19f03fe9020a8e
+ ----------------------------
+
