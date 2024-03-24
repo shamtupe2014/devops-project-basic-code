@@ -3,7 +3,7 @@ https://github.com/shamtupe2014/Devops-Realtime-Project.git download-build,deplo
 
 Git repo= https://github.com/shamtupe2014/java-test-pro.git
 other sample public repo= https://github.com/buddy-works/simple-java-project.git
-
+Git base code repo = https://github.com/shamtupe2014/devops-project-basic-code.git
 
 yum update -y
 wget https://downloads.apache.org/tomcat/tomcat-9/v9.0.87/bin/apache-tomcat-9.0.87.tar.gz
