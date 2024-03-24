@@ -67,6 +67,9 @@ resource "aws_instance" "JMG-Server" {
 output "Public-Ip-JMG-Server" {
   value = aws_instance.JMG-Server.public_ip
   }
+output "Public-Ip-App-Server" {
+  value = aws_instance.App-Server.public_ip
+  }
 
 /**
 resource "aws_instance" "J-Server" {
